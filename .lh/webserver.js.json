@@ -1,0 +1,66 @@
+{
+    "sourceFile": "webserver.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 12,
+            "patches": [
+                {
+                    "date": 1639409800624,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1639410106657,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,13 +4,17 @@\n const app = express()\n const port = 3333\n \n app.get('/', (req, res) => {\n+  console.log('res:', res)\n+  console.log('req:', req)\n   res.send('Hello World!')\n })\n \n app.post('/', (req, res) => {\n-  res.send('Hello World!')\n+  console.log('req:', req)\n+  console.log('res:', res)\n+  res.send(req)\n })\n \n app.listen(port, () => {\n   console.log(`listening at port ${port}`)\n"
+                },
+                {
+                    "date": 1639410183075,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n \n app.get('/', (req, res) => {\n   console.log('res:', res)\n   console.log('req:', req)\n-  res.send('Hello World!')\n+  res.send(req)\n })\n \n app.post('/', (req, res) => {\n   console.log('req:', req)\n"
+                },
+                {
+                    "date": 1639410282811,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,16 +4,12 @@\n const app = express()\n const port = 3333\n \n app.get('/', (req, res) => {\n-  console.log('res:', res)\n-  console.log('req:', req)\n   res.send(req)\n })\n \n app.post('/', (req, res) => {\n-  console.log('req:', req)\n-  console.log('res:', res)\n   res.send(req)\n })\n \n app.listen(port, () => {\n"
+                },
+                {
+                    "date": 1639410405171,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,12 +4,16 @@\n const app = express()\n const port = 3333\n \n app.get('/', (req, res) => {\n+  console.log('res:', res)\n+  console.log('req:', req)\n   res.send(req)\n })\n \n app.post('/', (req, res) => {\n+  console.log('req:', req)\n+  console.log('res:', res)\n   res.send(req)\n })\n \n app.listen(port, () => {\n"
+                },
+                {
+                    "date": 1639410421361,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,16 +4,14 @@\n const app = express()\n const port = 3333\n \n app.get('/', (req, res) => {\n-  console.log('res:', res)\n   console.log('req:', req)\n   res.send(req)\n })\n \n app.post('/', (req, res) => {\n   console.log('req:', req)\n-  console.log('res:', res)\n   res.send(req)\n })\n \n app.listen(port, () => {\n"
+                },
+                {
+                    "date": 1639410498615,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,14 +4,12 @@\n const app = express()\n const port = 3333\n \n app.get('/', (req, res) => {\n-  console.log('req:', req)\n   res.send(req)\n })\n \n app.post('/', (req, res) => {\n-  console.log('req:', req)\n   res.send(req)\n })\n \n app.listen(port, () => {\n"
+                },
+                {
+                    "date": 1639412415764,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,13 +4,13 @@\n const app = express()\n const port = 3333\n \n app.get('/', (req, res) => {\n-  res.send(req)\n+  res.send('get')\n })\n \n app.post('/', (req, res) => {\n-  res.send(req)\n+  res.send('post')\n })\n \n app.listen(port, () => {\n   console.log(`listening at port ${port}`)\n"
+                },
+                {
+                    "date": 1639412776949,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n \n const express = require('express')\n const app = express()\n const port = 3333\n+const bodyParser = require('body-parser')\n \n app.get('/', (req, res) => {\n   res.send('get')\n })\n"
+                },
+                {
+                    "date": 1639413809704,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,10 @@\n const app = express()\n const port = 3333\n const bodyParser = require('body-parser')\n \n+app.use(bodyParser.urlencoded({extended: false}))\n+\n app.get('/', (req, res) => {\n   res.send('get')\n })\n \n"
+                },
+                {
+                    "date": 1639413877445,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,9 @@\n })\n \n app.post('/', (req, res) => {\n   res.send('post')\n+  console.log(req.body)\n })\n \n app.listen(port, () => {\n   console.log(`listening at port ${port}`)\n"
+                },
+                {
+                    "date": 1639413937050,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n })\n \n app.post('/', (req, res) => {\n   res.send('post')\n-  console.log(req.body)\n+  console.log(req.body.vorname)\n })\n \n app.listen(port, () => {\n   console.log(`listening at port ${port}`)\n"
+                },
+                {
+                    "date": 1639414155802,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n   res.send('get')\n })\n \n app.post('/', (req, res) => {\n-  res.send('post')\n+  res.send(`Hallo ${req.body.vorname}, was geht?`)\n   console.log(req.body.vorname)\n })\n \n app.listen(port, () => {\n"
+                }
+            ],
+            "date": 1639409800624,
+            "name": "Commit-0",
+            "content": "// http://161.97.107.249:3333/\n\nconst express = require('express')\nconst app = express()\nconst port = 3333\n\napp.get('/', (req, res) => {\n  res.send('Hello World!')\n})\n\napp.post('/', (req, res) => {\n  res.send('Hello World!')\n})\n\napp.listen(port, () => {\n  console.log(`listening at port ${port}`)\n})"
+        }
+    ]
+}
