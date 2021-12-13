@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 16,
+            "activePatchIndex": 17,
             "patches": [
                 {
                     "date": 1639185718340,
@@ -72,6 +72,10 @@
                 {
                     "date": 1639416203084,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,8 +11,9 @@\n   <h1>Hello hello</h1>\n   <h2>This is a recaptcha test</h2>\n   <h3>Version 2</h3>\n   <form action=\"http://161.97.107.249:3333/\" method=\"post\">\n+    <div class=\"g-recaptcha\" data-sitekey=\"6Le7344dAAAAAN2yWdX_mSJhM1jakh-NtuztbEKi\"></div>\n     <div>\n       <label for=\"vorname\">Vorname</label>\n       <input id=\"vorname\" name=\"vorname\" type=\"text\">\n     <div>\n"
+                },
+                {
+                    "date": 1639417061734,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n   <h1>Hello hello</h1>\n   <h2>This is a recaptcha test</h2>\n   <h3>Version 2</h3>\n   <form action=\"http://161.97.107.249:3333/\" method=\"post\">\n-    <div class=\"g-recaptcha\" data-sitekey=\"6Le7344dAAAAAN2yWdX_mSJhM1jakh-NtuztbEKi\"></div>\n+    <div class=\"g-recaptcha\" data-theme=\"dark\" data-sitekey=\"6Le7344dAAAAAN2yWdX_mSJhM1jakh-NtuztbEKi\"></div>\n     <div>\n       <label for=\"vorname\">Vorname</label>\n       <input id=\"vorname\" name=\"vorname\" type=\"text\">\n     <div>\n"
                 }
             ],
             "date": 1639185718340,
