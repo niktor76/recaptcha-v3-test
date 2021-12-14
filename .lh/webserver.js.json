@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 56,
+            "activePatchIndex": 58,
             "patches": [
                 {
                     "date": 1639409800624,
@@ -232,6 +232,14 @@
                 {
                     "date": 1639492136919,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,10 +13,10 @@\n })\n \n app.post('/', async (req, res) => {\n   console.log('vorname', req.body.vorname)\n-  console.log('post', await isVerified(req.body['g-recaptcha-response']))\n   const isOk = await isVerified(req.body['g-recaptcha-response'])\n+  console.log('post', isOk)\n   let reaktion\n   if (isOk) {\n     reaktion = 'Sehr schön, du hast das reCaptcha richtig beantwortet'\n   } else {\n"
+                },
+                {
+                    "date": 1639492541950,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,6 +51,6 @@\n     return result.data.success\n   } catch (error) {\n     console.log('error', error)\n     return false\n-  }\n+  }d\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1639492549001,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,6 +51,6 @@\n     return result.data.success\n   } catch (error) {\n     console.log('error', error)\n     return false\n-  }d\n+  }\n }\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1639409800624,
