@@ -6,12 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script>
+    function onSubmit(token) {
+      document.getElementById("demo-form").submit();
+    }
+  </script>
 </head>
 <body>
   <h1>Hello hello</h1>
   <h2>This is a recaptcha test</h2>
   <h3>Version 3</h3>
-  <form action="http://161.97.107.249:3333/" method="post">
+  <form action="http://161.97.107.249:3333/" method="post" id="demo-form">
     <div>
       <label for="vorname">Vorname</label>
       <input id="vorname" name="vorname" type="text">
@@ -20,9 +25,10 @@
         <input id="nachname" name="nachname" type="text">
       </div>
       <div>
-        <input type="submit" value="Absenden">
-      </div>
-      <div class="g-recaptcha" data-theme="dark" data-sitekey="6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-"></div>
+        <button class="g-recaptcha" 
+        data-sitekey="6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-" 
+        data-callback='onSubmit' 
+        data-action='submit'>Submit</button>      </div>
   </form>
 </body>
 </html>
