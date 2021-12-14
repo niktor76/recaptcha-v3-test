@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 12,
+            "activePatchIndex": 56,
             "patches": [
                 {
                     "date": 1639409800624,
@@ -56,6 +56,182 @@
                 {
                     "date": 1639414155802,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n   res.send('get')\n })\n \n app.post('/', (req, res) => {\n-  res.send('post')\n+  res.send(`Hallo ${req.body.vorname}, was geht?`)\n   console.log(req.body.vorname)\n })\n \n app.listen(port, () => {\n"
+                },
+                {
+                    "date": 1639477844303,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,5 +17,6 @@\n })\n \n app.listen(port, () => {\n   console.log(`listening at port ${port}`)\n-})\n\\ No newline at end of file\n+})\n+\n"
+                },
+                {
+                    "date": 1639478392767,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,4 +19,6 @@\n app.listen(port, () => {\n   console.log(`listening at port ${port}`)\n })\n \n+const xhr = new XMLHttpRequest()\n+xhr.open('POST', 'https://www.google.com/recaptcha/api/siteverify', )\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1639478450036,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,5 +20,5 @@\n   console.log(`listening at port ${port}`)\n })\n \n const xhr = new XMLHttpRequest()\n-xhr.open('POST', 'https://www.google.com/recaptcha/api/siteverify', )\n\\ No newline at end of file\n+xhr.open('POST', 'https://www.google.com/recaptcha/api/siteverify', false)\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1639478545499,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,5 +20,5 @@\n   console.log(`listening at port ${port}`)\n })\n \n const xhr = new XMLHttpRequest()\n-xhr.open('POST', 'https://www.google.com/recaptcha/api/siteverify', false)\n\\ No newline at end of file\n+xhr.open('POST', 'https://www.google.com/recaptcha/api/siteverify', false)\n"
+                },
+                {
+                    "date": 1639478877073,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,4 +21,19 @@\n })\n \n const xhr = new XMLHttpRequest()\n xhr.open('POST', 'https://www.google.com/recaptcha/api/siteverify', false)\n+\n+var http = new XMLHttpRequest();\n+var url = 'get_data.php';\n+var params = 'orem=ipsum&name=binny';\n+http.open('POST', url, true);\n+\n+//Send the proper header information along with the request\n+http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');\n+\n+http.onreadystatechange = function() {//Call a function when the state changes.\n+    if(http.readyState == 4 && http.status == 200) {\n+        alert(http.responseText);\n+    }\n+}\n+http.send(params);\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1639479344495,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,17 +19,27 @@\n app.listen(port, () => {\n   console.log(`listening at port ${port}`)\n })\n \n-const xhr = new XMLHttpRequest()\n-xhr.open('POST', 'https://www.google.com/recaptcha/api/siteverify', false)\n-\n-var http = new XMLHttpRequest();\n-var url = 'get_data.php';\n-var params = 'orem=ipsum&name=binny';\n-http.open('POST', url, true);\n-\n-//Send the proper header information along with the request\n+function isVerified(response) {\n+  const secret = '6Le7344dAAAAAJqUumaCgCuxh7g_AGp34NZUmFW0'\n+  const xhr = new XMLHttpRequest()\n+  xhr.open('POST', 'https://www.google.com/recaptcha/api/siteverify', true)\n+  xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')\n+  xhr.onreadystatechange = function () {\n+    if (xhr.readyState === 4 && xhr.status === 200) {\n+      alert(xhr.responseText)\n+    }\n+  }\n+  const params = `secret`\n+  xhr.send(params)\n+}\n+  var http = new XMLHttpRequest();\n+  var url = 'get_data.php';\n+  var params = 'orem=ipsum&name=binny';\n+  http.open('POST', url, true);\n+  \n+  //Send the proper header information along with the request\n http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');\n \n http.onreadystatechange = function() {//Call a function when the state changes.\n     if(http.readyState == 4 && http.status == 200) {\n"
+                },
+                {
+                    "date": 1639479378375,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,9 +29,9 @@\n     if (xhr.readyState === 4 && xhr.status === 200) {\n       alert(xhr.responseText)\n     }\n   }\n-  const params = `secret`\n+  const params = `secret=${secret}&'\n   xhr.send(params)\n }\n   var http = new XMLHttpRequest();\n   var url = 'get_data.php';\n"
+                },
+                {
+                    "date": 1639479394932,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,9 +29,9 @@\n     if (xhr.readyState === 4 && xhr.status === 200) {\n       alert(xhr.responseText)\n     }\n   }\n-  const params = `secret=${secret}&'\n+  const params = `secret=${secret}`\n   xhr.send(params)\n }\n   var http = new XMLHttpRequest();\n   var url = 'get_data.php';\n"
+                },
+                {
+                    "date": 1639479449810,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,24 +26,11 @@\n   xhr.open('POST', 'https://www.google.com/recaptcha/api/siteverify', true)\n   xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')\n   xhr.onreadystatechange = function () {\n     if (xhr.readyState === 4 && xhr.status === 200) {\n-      alert(xhr.responseText)\n+      console.log(xhr.responseText)\n     }\n   }\n-  const params = `secret=${secret}`\n+  const params = `secret=${secret}&response=${response}`\n   xhr.send(params)\n }\n-  var http = new XMLHttpRequest();\n-  var url = 'get_data.php';\n-  var params = 'orem=ipsum&name=binny';\n-  http.open('POST', url, true);\n-  \n-  //Send the proper header information along with the request\n-http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');\n-\n-http.onreadystatechange = function() {//Call a function when the state changes.\n-    if(http.readyState == 4 && http.status == 200) {\n-        alert(http.responseText);\n-    }\n\\ No newline at end of file\n-}\n-http.send(params);\n+  \n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1639479551700,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,8 +13,9 @@\n \n app.post('/', (req, res) => {\n   res.send(`Hallo ${req.body.vorname}, was geht?`)\n   console.log(req.body.vorname)\n+  console.log('post', isVerified(req.body.))\n })\n \n app.listen(port, () => {\n   console.log(`listening at port ${port}`)\n"
+                },
+                {
+                    "date": 1639479618210,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,10 @@\n \n app.post('/', (req, res) => {\n   res.send(`Hallo ${req.body.vorname}, was geht?`)\n   console.log(req.body.vorname)\n-  console.log('post', isVerified(req.body.))\n+  console.log(req.body.gCaptchaResponse)\n+  console.log('post', isVerified(req.body.gCaptchaResponse))\n })\n \n app.listen(port, () => {\n   console.log(`listening at port ${port}`)\n"
+                },
+                {
+                    "date": 1639479746765,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n \n app.post('/', (req, res) => {\n   res.send(`Hallo ${req.body.vorname}, was geht?`)\n   console.log(req.body.vorname)\n-  console.log(req.body.gCaptchaResponse)\n+  console.log(req.body)\n   console.log('post', isVerified(req.body.gCaptchaResponse))\n })\n \n app.listen(port, () => {\n"
+                },
+                {
+                    "date": 1639479849054,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n \n app.post('/', (req, res) => {\n   res.send(`Hallo ${req.body.vorname}, was geht?`)\n   console.log(req.body.vorname)\n-  console.log(req.body)\n+  console.log(JSON.parse(req.body))\n   console.log('post', isVerified(req.body.gCaptchaResponse))\n })\n \n app.listen(port, () => {\n"
+                },
+                {
+                    "date": 1639479939238,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n \n app.post('/', (req, res) => {\n   res.send(`Hallo ${req.body.vorname}, was geht?`)\n   console.log(req.body.vorname)\n-  console.log(JSON.parse(req.body))\n+  console.log(typeof(req.body))\n   console.log('post', isVerified(req.body.gCaptchaResponse))\n })\n \n app.listen(port, () => {\n"
+                },
+                {
+                    "date": 1639480023615,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n \n app.post('/', (req, res) => {\n   res.send(`Hallo ${req.body.vorname}, was geht?`)\n   console.log(req.body.vorname)\n-  console.log(typeof(req.body))\n+  console.log((req.body))\n   console.log('post', isVerified(req.body.gCaptchaResponse))\n })\n \n app.listen(port, () => {\n"
+                },
+                {
+                    "date": 1639480036647,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n app.post('/', (req, res) => {\n   res.send(`Hallo ${req.body.vorname}, was geht?`)\n   console.log(req.body.vorname)\n   console.log((req.body))\n-  console.log('post', isVerified(req.body.gCaptchaResponse))\n+  console.log('post', isVerified(req.body.gRecaptchaResponse))\n })\n \n app.listen(port, () => {\n   console.log(`listening at port ${port}`)\n"
+                },
+                {
+                    "date": 1639480051151,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n \n app.post('/', (req, res) => {\n   res.send(`Hallo ${req.body.vorname}, was geht?`)\n   console.log(req.body.vorname)\n-  console.log((req.body))\n+  console.log((req.body.gRecaptchaResponse))\n   console.log('post', isVerified(req.body.gRecaptchaResponse))\n })\n \n app.listen(port, () => {\n"
+                },
+                {
+                    "date": 1639480078369,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n \n app.post('/', (req, res) => {\n   res.send(`Hallo ${req.body.vorname}, was geht?`)\n   console.log(req.body.vorname)\n-  console.log((req.body.gRecaptchaResponse))\n+  console.log((req.body))\n   console.log('post', isVerified(req.body.gRecaptchaResponse))\n })\n \n app.listen(port, () => {\n"
+                },
+                {
+                    "date": 1639480156564,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n \n app.post('/', (req, res) => {\n   res.send(`Hallo ${req.body.vorname}, was geht?`)\n   console.log(req.body.vorname)\n-  console.log((req.body))\n+  console.log((req.body['g-recaptcha-response']))\n   console.log('post', isVerified(req.body.gRecaptchaResponse))\n })\n \n app.listen(port, () => {\n"
+                },
+                {
+                    "date": 1639480193524,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,9 @@\n app.post('/', (req, res) => {\n   res.send(`Hallo ${req.body.vorname}, was geht?`)\n   console.log(req.body.vorname)\n   console.log((req.body['g-recaptcha-response']))\n+  console.log((req.body.gRecaptchaResponse))\n   console.log('post', isVerified(req.body.gRecaptchaResponse))\n })\n \n app.listen(port, () => {\n"
+                },
+                {
+                    "date": 1639480222302,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n   res.send(`Hallo ${req.body.vorname}, was geht?`)\n   console.log(req.body.vorname)\n   console.log((req.body['g-recaptcha-response']))\n   console.log((req.body.gRecaptchaResponse))\n-  console.log('post', isVerified(req.body.gRecaptchaResponse))\n+  console.log('post', isVerified(req.body['g-recaptcha-response']))\n })\n \n app.listen(port, () => {\n   console.log(`listening at port ${port}`)\n"
+                },
+                {
+                    "date": 1639480502210,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,8 @@\n app.post('/', (req, res) => {\n   res.send(`Hallo ${req.body.vorname}, was geht?`)\n   console.log(req.body.vorname)\n   console.log((req.body['g-recaptcha-response']))\n-  console.log((req.body.gRecaptchaResponse))\n   console.log('post', isVerified(req.body['g-recaptcha-response']))\n })\n \n app.listen(port, () => {\n"
+                },
+                {
+                    "date": 1639488814834,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n // http://161.97.107.249:3333/\n \n const express = require('express')\n+const axios = require('axios')\n const app = express()\n const port = 3333\n const bodyParser = require('body-parser')\n \n"
+                },
+                {
+                    "date": 1639489566190,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,8 +22,11 @@\n app.listen(port, () => {\n   console.log(`listening at port ${port}`)\n })\n \n+\n+\n+\n function isVerified(response) {\n   const secret = '6Le7344dAAAAAJqUumaCgCuxh7g_AGp34NZUmFW0'\n   const xhr = new XMLHttpRequest()\n   xhr.open('POST', 'https://www.google.com/recaptcha/api/siteverify', true)\n"
+                },
+                {
+                    "date": 1639489903249,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,16 +27,18 @@\n \n \n function isVerified(response) {\n   const secret = '6Le7344dAAAAAJqUumaCgCuxh7g_AGp34NZUmFW0'\n-  const xhr = new XMLHttpRequest()\n-  xhr.open('POST', 'https://www.google.com/recaptcha/api/siteverify', true)\n-  xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')\n-  xhr.onreadystatechange = function () {\n-    if (xhr.readyState === 4 && xhr.status === 200) {\n-      console.log(xhr.responseText)\n-    }\n-  }\n-  const params = `secret=${secret}&response=${response}`\n-  xhr.send(params)\n+  \n+\n+  // const xhr = new XMLHttpRequest()\n+  // xhr.open('POST', 'https://www.google.com/recaptcha/api/siteverify', true)\n+  // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')\n+  // xhr.onreadystatechange = function () {\n+  //   if (xhr.readyState === 4 && xhr.status === 200) {\n+  //     console.log(xhr.responseText)\n+  //   }\n+  // }\n+  // const params = `secret=${secret}&response=${response}`\n+  // xhr.send(params)\n }\n   \n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1639490175185,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,10 +27,14 @@\n \n \n function isVerified(response) {\n   const secret = '6Le7344dAAAAAJqUumaCgCuxh7g_AGp34NZUmFW0'\n-  \n-\n+  const url = 'https://www.google.com/recaptcha/api/siteverify'\n+  axios.post(url, {\n+    secret: secret,\n+    response: response\n+  })\n+  .then(response => {\n   // const xhr = new XMLHttpRequest()\n   // xhr.open('POST', 'https://www.google.com/recaptcha/api/siteverify', true)\n   // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')\n   // xhr.onreadystatechange = function () {\n"
+                },
+                {
+                    "date": 1639490246511,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,16 +33,11 @@\n     secret: secret,\n     response: response\n   })\n   .then(response => {\n-  // const xhr = new XMLHttpRequest()\n-  // xhr.open('POST', 'https://www.google.com/recaptcha/api/siteverify', true)\n-  // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')\n-  // xhr.onreadystatechange = function () {\n-  //   if (xhr.readyState === 4 && xhr.status === 200) {\n-  //     console.log(xhr.responseText)\n-  //   }\n-  // }\n-  // const params = `secret=${secret}&response=${response}`\n-  // xhr.send(params)\n+    console.log(response.data)\n+    return response.data.success\n\\ No newline at end of file\n+  })\n+  .catch(error => {\n+    console.log(error)\n+  })\n }\n-  \n"
+                },
+                {
+                    "date": 1639490608053,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,16 +28,21 @@\n \n function isVerified(response) {\n   const secret = '6Le7344dAAAAAJqUumaCgCuxh7g_AGp34NZUmFW0'\n   const url = 'https://www.google.com/recaptcha/api/siteverify'\n-  axios.post(url, {\n-    secret: secret,\n-    response: response\n-  })\n-  .then(response => {\n-    console.log(response.data)\n-    return response.data.success\n-  })\n-  .catch(error => {\n-    console.log(error)\n-  })\n-}\n\\ No newline at end of file\n+  axios.post(\n+    url,\n+    {\n+      secret: secret,\n+      response: response\n+    },\n+    {\n+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }\n+    })\n+    .then(response => {\n+      console.log(response.data)\n+      return response.data.success\n+    })\n+    .catch(error => {\n+      console.log(error)\n+    })\n+}\n"
+                },
+                {
+                    "date": 1639490772458,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,8 +26,9 @@\n \n \n \n function isVerified(response) {\n+  console.log('response:', response)\n   const secret = '6Le7344dAAAAAJqUumaCgCuxh7g_AGp34NZUmFW0'\n   const url = 'https://www.google.com/recaptcha/api/siteverify'\n   axios.post(\n     url,\n"
+                },
+                {
+                    "date": 1639490828779,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,8 @@\n \n app.post('/', (req, res) => {\n   res.send(`Hallo ${req.body.vorname}, was geht?`)\n   console.log(req.body.vorname)\n-  console.log((req.body['g-recaptcha-response']))\n   console.log('post', isVerified(req.body['g-recaptcha-response']))\n })\n \n app.listen(port, () => {\n@@ -39,9 +38,9 @@\n     {\n       headers: { 'Content-Type': 'application/x-www-form-urlencoded' }\n     })\n     .then(response => {\n-      console.log(response.data)\n+      console.log('response.data', response.data)\n       return response.data.success\n     })\n     .catch(error => {\n       console.log(error)\n"
+                },
+                {
+                    "date": 1639490857802,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -42,7 +42,8 @@\n       console.log('response.data', response.data)\n       return response.data.success\n     })\n     .catch(error => {\n+      console.log('error:', error)\n       console.log(error)\n     })\n }\n"
+                },
+                {
+                    "date": 1639490932324,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n })\n \n app.post('/', (req, res) => {\n   res.send(`Hallo ${req.body.vorname}, was geht?`)\n-  console.log(req.body.vorname)\n+  console.log('vorname', req.body.vorname)\n   console.log('post', isVerified(req.body['g-recaptcha-response']))\n })\n \n app.listen(port, () => {\n"
+                },
+                {
+                    "date": 1639490990882,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,12 +11,12 @@\n app.get('/', (req, res) => {\n   res.send('get')\n })\n \n-app.post('/', (req, res) => {\n+app.post('/', async (req, res) => {\n   res.send(`Hallo ${req.body.vorname}, was geht?`)\n   console.log('vorname', req.body.vorname)\n-  console.log('post', isVerified(req.body['g-recaptcha-response']))\n+  console.log('post', await isVerified(req.body['g-recaptcha-response']))\n })\n \n app.listen(port, () => {\n   console.log(`listening at port ${port}`)\n@@ -24,9 +24,9 @@\n \n \n \n \n-function isVerified(response) {\n+async function isVerified(response) {\n   console.log('response:', response)\n   const secret = '6Le7344dAAAAAJqUumaCgCuxh7g_AGp34NZUmFW0'\n   const url = 'https://www.google.com/recaptcha/api/siteverify'\n   axios.post(\n"
+                },
+                {
+                    "date": 1639491020873,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -44,6 +44,7 @@\n     })\n     .catch(error => {\n       console.log('error:', error)\n       console.log(error)\n+      return error\n     })\n }\n"
+                },
+                {
+                    "date": 1639491059912,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,10 +31,10 @@\n   const url = 'https://www.google.com/recaptcha/api/siteverify'\n   axios.post(\n     url,\n     {\n-      secret: secret,\n-      response: response\n+      'secret': secret,\n+      'response': response\n     },\n     {\n       headers: { 'Content-Type': 'application/x-www-form-urlencoded' }\n     })\n"
+                },
+                {
+                    "date": 1639491111541,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,10 +31,10 @@\n   const url = 'https://www.google.com/recaptcha/api/siteverify'\n   axios.post(\n     url,\n     {\n-      'secret': secret,\n-      'response': response\n+      secret: secret,\n+      response: response\n     },\n     {\n       headers: { 'Content-Type': 'application/x-www-form-urlencoded' }\n     })\n"
+                },
+                {
+                    "date": 1639491178425,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,14 +28,22 @@\n async function isVerified(response) {\n   console.log('response:', response)\n   const secret = '6Le7344dAAAAAJqUumaCgCuxh7g_AGp34NZUmFW0'\n   const url = 'https://www.google.com/recaptcha/api/siteverify'\n-  axios.post(\n-    url,\n+  axios(\n     {\n-      secret: secret,\n-      response: response\n-    },\n+      method: 'post',\n+      url: url,\n+      params: {\n+        secret: secret,\n+        response: response\n+      }\n+    }\n+  ).then(response => {\n+    console.log('response:', response.data)\n+    return response.data\n+  })\n+}\n     {\n       headers: { 'Content-Type': 'application/x-www-form-urlencoded' }\n     })\n     .then(response => {\n"
+                },
+                {
+                    "date": 1639491249085,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,24 +35,15 @@\n       url: url,\n       params: {\n         secret: secret,\n         response: response\n-      }\n+      },\n+      headers: {  'Content-Type': 'application/x-www-form-urlencoded' }\n     }\n   ).then(response => {\n     console.log('response:', response.data)\n     return response.data\n-  })\n-}\n-    {\n-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }\n-    })\n-    .then(response => {\n-      console.log('response.data', response.data)\n-      return response.data.success\n-    })\n-    .catch(error => {\n-      console.log('error:', error)\n-      console.log(error)\n-      return error\n-    })\n-}\n+  }).catch(error => {\n+    console.log('error:', error)\n+  }\n+  )\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1639491260581,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,9 +36,9 @@\n       params: {\n         secret: secret,\n         response: response\n       },\n-      headers: {  'Content-Type': 'application/x-www-form-urlencoded' }\n+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }\n     }\n   ).then(response => {\n     console.log('response:', response.data)\n     return response.data\n"
+                },
+                {
+                    "date": 1639491449141,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,10 @@\n async function isVerified(response) {\n   console.log('response:', response)\n   const secret = '6Le7344dAAAAAJqUumaCgCuxh7g_AGp34NZUmFW0'\n   const url = 'https://www.google.com/recaptcha/api/siteverify'\n-  axios(\n+  try {\n+    await axios(\n     {\n       method: 'post',\n       url: url,\n       params: {\n@@ -38,9 +39,13 @@\n         response: response\n       },\n       headers: { 'Content-Type': 'application/x-www-form-urlencoded' }\n     }\n-  ).then(response => {\n+  )\n+  } catch (error) {\n+    \n+  }\n+  .then(response => {\n     console.log('response:', response.data)\n     return response.data\n   }).catch(error => {\n     console.log('error:', error)\n"
+                },
+                {
+                    "date": 1639491582366,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n const app = express()\n const port = 3333\n const bodyParser = require('body-parser')\n \n-app.use(bodyParser.urlencoded({extended: false}))\n+app.use(bodyParser.urlencoded({ extended: false }))\n \n app.get('/', (req, res) => {\n   res.send('get')\n })\n@@ -29,26 +29,21 @@\n   console.log('response:', response)\n   const secret = '6Le7344dAAAAAJqUumaCgCuxh7g_AGp34NZUmFW0'\n   const url = 'https://www.google.com/recaptcha/api/siteverify'\n   try {\n-    await axios(\n-    {\n-      method: 'post',\n-      url: url,\n-      params: {\n-        secret: secret,\n-        response: response\n-      },\n-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }\n-    }\n-  )\n+    const result = await axios(\n+      {\n+        method: 'post',\n+        url: url,\n+        params: {\n+          secret: secret,\n+          response: response\n+        },\n+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }\n+      }\n+    )\n+    return result.data.success\n   } catch (error) {\n-    \n+    console.log('error', error)\n+    return false\n   }\n-  .then(response => {\n-    console.log('response:', response.data)\n-    return response.data\n-  }).catch(error => {\n-    console.log('error:', error)\n-  }\n-  )\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1639492062181,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,11 +12,18 @@\n   res.send('get')\n })\n \n app.post('/', async (req, res) => {\n-  res.send(`Hallo ${req.body.vorname}, was geht?`)\n   console.log('vorname', req.body.vorname)\n   console.log('post', await isVerified(req.body['g-recaptcha-response']))\n+  const isOk = await isVerified(req.body['g-recaptcha-response'])\n+  let reaktion\n+  if (isOk) {\n+    reaktion = 'Sehr schön, du hast das reCaptcha richtig beantwortet'\n+  } else {\n+    reaktion = 'Du hast das reCaptcha nicht richtig beantwortet'\n+  }\n+  res.send(`Hallo ${req.body.vorname}, was geht?` + reaktion)\n })\n \n app.listen(port, () => {\n   console.log(`listening at port ${port}`)\n"
+                },
+                {
+                    "date": 1639492082408,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n     reaktion = 'Sehr schön, du hast das reCaptcha richtig beantwortet'\n   } else {\n     reaktion = 'Du hast das reCaptcha nicht richtig beantwortet'\n   }\n-  res.send(`Hallo ${req.body.vorname}, was geht?` + reaktion)\n+  res.send(`Hallo ${req.body.vorname}, was geht? ` + reaktion)\n })\n \n app.listen(port, () => {\n   console.log(`listening at port ${port}`)\n"
+                },
+                {
+                    "date": 1639492136919,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,10 +13,10 @@\n })\n \n app.post('/', async (req, res) => {\n   console.log('vorname', req.body.vorname)\n-  console.log('post', await isVerified(req.body['g-recaptcha-response']))\n   const isOk = await isVerified(req.body['g-recaptcha-response'])\n+  console.log('post', isOk)\n   let reaktion\n   if (isOk) {\n     reaktion = 'Sehr schön, du hast das reCaptcha richtig beantwortet'\n   } else {\n"
                 }
             ],
             "date": 1639409800624,
