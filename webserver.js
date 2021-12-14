@@ -3,7 +3,7 @@
 const express = require('express')
 const axios = require('axios')
 const app = express()
-const port = 3333
+const port = 3334
 const bodyParser = require('body-parser')
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', async (req, res) => {
-  console.log('vorname', req.body.vorname)
+  console.log('req:', req.body)
   const isOk = await isVerified(req.body['g-recaptcha-response'])
   console.log('post', isOk)
   let reaktion
@@ -48,6 +48,7 @@ async function isVerified(response) {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
       }
     )
+    console.log('result.data:', result.data)
     return result.data.success
   } catch (error) {
     console.log('error', error)

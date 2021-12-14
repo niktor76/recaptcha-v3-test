@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 28,
+            "activePatchIndex": 69,
             "patches": [
                 {
                     "date": 1639185718340,
@@ -120,6 +120,170 @@
                 {
                     "date": 1639498061391,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n <body>\n   <h1>Hello hello</h1>\n   <h2>This is a recaptcha test</h2>\n   <h3>Version 3</h3>\n-  <form action=\"http://161.97.107.249:3333/\" method=\"post\">\n+  <form action=\"http://161.97.107.249:3333/\" method=\"post\" id=\"demo-form\">\n     <div>\n       <label for=\"vorname\">Vorname</label>\n       <input id=\"vorname\" name=\"vorname\" type=\"text\">\n       <div>\n"
+                },
+                {
+                    "date": 1639498453146,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,9 @@\n   <title>Document</title>\n   <script src=\"https://www.google.com/recaptcha/api.js\" async defer></script>\n   <script>\n     function onSubmit(token) {\n+      console.log('token: ' + token);\n       document.getElementById(\"demo-form\").submit();\n     }\n   </script>\n </head>\n"
+                },
+                {
+                    "date": 1639498479477,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n <!DOCTYPE html>\n <html lang=\"en\">\n+\n <head>\n   <meta charset=\"UTF-8\">\n   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n@@ -12,8 +13,9 @@\n       document.getElementById(\"demo-form\").submit();\n     }\n   </script>\n </head>\n+\n <body>\n   <h1>Hello hello</h1>\n   <h2>This is a recaptcha test</h2>\n   <h3>Version 3</h3>\n@@ -24,12 +26,10 @@\n       <div>\n         <label for=\"nachname\">Nachname</label>\n         <input id=\"nachname\" name=\"nachname\" type=\"text\">\n       </div>\n-      <div>\n-        <button class=\"g-recaptcha\" \n-        data-sitekey=\"6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\" \n-        data-callback='onSubmit' \n-        data-action='submit'>Submit</button>      </div>\n+      <button class=\"g-recaptcha\" data-sitekey=\"6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\" data-callback='onSubmit'\n+        data-action='submit'>Submit</button>\n   </form>\n </body>\n-</html>\n+\n+</html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1639498580909,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,10 +26,15 @@\n       <div>\n         <label for=\"nachname\">Nachname</label>\n         <input id=\"nachname\" name=\"nachname\" type=\"text\">\n       </div>\n-      <button class=\"g-recaptcha\" data-sitekey=\"6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\" data-callback='onSubmit'\n-        data-action='submit'>Submit</button>\n+      <button \n+        class=\"g-recaptcha\" \n+        data-sitekey=\"6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\" \n+        data-callback='onSubmit'\n+        data-action='submit'>\n+          Submit\n+      </button>\n   </form>\n </body>\n \n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1639498657028,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n <body>\n   <h1>Hello hello</h1>\n   <h2>This is a recaptcha test</h2>\n   <h3>Version 3</h3>\n-  <form action=\"http://161.97.107.249:3333/\" method=\"post\" id=\"demo-form\">\n+  <form action=\"http://161.97.107.249:3334/\" method=\"post\" id=\"demo-form\">\n     <div>\n       <label for=\"vorname\">Vorname</label>\n       <input id=\"vorname\" name=\"vorname\" type=\"text\">\n       <div>\n"
+                },
+                {
+                    "date": 1639498737371,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   <meta charset=\"UTF-8\">\n   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n   <title>Document</title>\n-  <script src=\"https://www.google.com/recaptcha/api.js\" async defer></script>\n+  <script src=\"https://www.google.com/recaptcha/api.js\"></script>\n   <script>\n     function onSubmit(token) {\n       console.log('token: ' + token);\n       document.getElementById(\"demo-form\").submit();\n"
+                },
+                {
+                    "date": 1639499034291,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,14 +6,8 @@\n   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n   <title>Document</title>\n   <script src=\"https://www.google.com/recaptcha/api.js\"></script>\n-  <script>\n-    function onSubmit(token) {\n-      console.log('token: ' + token);\n-      document.getElementById(\"demo-form\").submit();\n-    }\n-  </script>\n </head>\n \n <body>\n   <h1>Hello hello</h1>\n@@ -27,14 +21,20 @@\n         <label for=\"nachname\">Nachname</label>\n         <input id=\"nachname\" name=\"nachname\" type=\"text\">\n       </div>\n       <button \n-        class=\"g-recaptcha\" \n-        data-sitekey=\"6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\" \n-        data-callback='onSubmit'\n-        data-action='submit'>\n+      class=\"g-recaptcha\" \n+      data-sitekey=\"6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\" \n+      data-callback='onSubmit'\n+      data-action='submit'>\n           Submit\n       </button>\n   </form>\n+      <script>\n+        function onSubmit(token) {\n+          console.log('token: ' + token);\n+          document.getElementById(\"demo-form\").submit();\n+        }\n+      </script>\n </body>\n \n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1639499111698,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,15 @@\n   <meta charset=\"UTF-8\">\n   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n   <title>Document</title>\n-  <script src=\"https://www.google.com/recaptcha/api.js\"></script>\n+  <script src=\"https://www.google.com/recaptcha/api.js\" defer></script>\n+  <script>\n+    function onSubmit(token) {\n+      console.log('token: ' + token);\n+      document.getElementById(\"demo-form\").submit();\n+    }\n+  </script>\n </head>\n \n <body>\n   <h1>Hello hello</h1>\n@@ -20,21 +26,12 @@\n       <div>\n         <label for=\"nachname\">Nachname</label>\n         <input id=\"nachname\" name=\"nachname\" type=\"text\">\n       </div>\n-      <button \n-      class=\"g-recaptcha\" \n-      data-sitekey=\"6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\" \n-      data-callback='onSubmit'\n-      data-action='submit'>\n-          Submit\n+      <button class=\"g-recaptcha\" data-sitekey=\"6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\" data-callback='onSubmit'\n+        data-action='submit'>\n+        Submit\n       </button>\n   </form>\n-      <script>\n-        function onSubmit(token) {\n-          console.log('token: ' + token);\n-          document.getElementById(\"demo-form\").submit();\n-        }\n-      </script>\n </body>\n \n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1639499273641,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n   <title>Document</title>\n   <script src=\"https://www.google.com/recaptcha/api.js\" defer></script>\n   <script>\n-    function onSubmit(token) {\n+    var onSubmit = function(token) {\n       console.log('token: ' + token);\n       document.getElementById(\"demo-form\").submit();\n     }\n   </script>\n"
+                },
+                {
+                    "date": 1639499299550,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,15 +5,15 @@\n   <meta charset=\"UTF-8\">\n   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n   <title>Document</title>\n-  <script src=\"https://www.google.com/recaptcha/api.js\" defer></script>\n   <script>\n     var onSubmit = function(token) {\n       console.log('token: ' + token);\n       document.getElementById(\"demo-form\").submit();\n     }\n-  </script>\n+    </script>\n+    <script src=\"https://www.google.com/recaptcha/api.js\" defer></script>\n </head>\n \n <body>\n   <h1>Hello hello</h1>\n"
+                },
+                {
+                    "date": 1639499352814,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,12 +26,12 @@\n       <div>\n         <label for=\"nachname\">Nachname</label>\n         <input id=\"nachname\" name=\"nachname\" type=\"text\">\n       </div>\n+    </form>\n       <button class=\"g-recaptcha\" data-sitekey=\"6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\" data-callback='onSubmit'\n         data-action='submit'>\n         Submit\n       </button>\n-  </form>\n </body>\n \n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1639499453966,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n   <title>Document</title>\n   <script>\n     var onSubmit = function(token) {\n-      console.log('token: ' + token);\n+      console.log('token: ', token);\n       document.getElementById(\"demo-form\").submit();\n     }\n     </script>\n     <script src=\"https://www.google.com/recaptcha/api.js\" defer></script>\n"
+                },
+                {
+                    "date": 1639499889618,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,15 +5,15 @@\n   <meta charset=\"UTF-8\">\n   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n   <title>Document</title>\n+  <script src=\"https://www.google.com/recaptcha/api.js\" defer></script>\n   <script>\n-    var onSubmit = function(token) {\n-      console.log('token: ', token);\n+    function onSubmit(token) {\n+      console.log('token: ' + token);\n       document.getElementById(\"demo-form\").submit();\n     }\n-    </script>\n-    <script src=\"https://www.google.com/recaptcha/api.js\" defer></script>\n+  </script>\n </head>\n \n <body>\n   <h1>Hello hello</h1>\n@@ -26,12 +26,17 @@\n       <div>\n         <label for=\"nachname\">Nachname</label>\n         <input id=\"nachname\" name=\"nachname\" type=\"text\">\n       </div>\n-    </form>\n-      <button class=\"g-recaptcha\" data-sitekey=\"6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\" data-callback='onSubmit'\n+      <button id=\"submit-button\" class=\"g-recaptcha\" data-sitekey=\"6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\" data-callback='onSubmit'\n         data-action='submit'>\n         Submit\n       </button>\n+      <script>\n+        document.querySelector('#submit-button').addEventListener((event) => {\n+          event.target.closest('form').submit();\n+        })\n+      </script>\n+  </form>\n </body>\n \n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1639499931391,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,8 +32,9 @@\n         Submit\n       </button>\n       <script>\n         document.querySelector('#submit-button').addEventListener((event) => {\n+          console.log('hi')\n           event.target.closest('form').submit();\n         })\n       </script>\n   </form>\n"
+                },
+                {
+                    "date": 1639499949221,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,9 @@\n         data-action='submit'>\n         Submit\n       </button>\n       <script>\n-        document.querySelector('#submit-button').addEventListener((event) => {\n+        document.querySelector('#submit-button').addEventListener('click', (event) => {\n           console.log('hi')\n           event.target.closest('form').submit();\n         })\n       </script>\n"
+                },
+                {
+                    "date": 1639500194897,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,14 +30,14 @@\n       <button id=\"submit-button\" class=\"g-recaptcha\" data-sitekey=\"6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\" data-callback='onSubmit'\n         data-action='submit'>\n         Submit\n       </button>\n+      </form>\n       <script>\n         document.querySelector('#submit-button').addEventListener('click', (event) => {\n           console.log('hi')\n           event.target.closest('form').submit();\n         })\n       </script>\n-  </form>\n </body>\n \n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1639500413134,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,13 +31,7 @@\n         data-action='submit'>\n         Submit\n       </button>\n       </form>\n-      <script>\n-        document.querySelector('#submit-button').addEventListener('click', (event) => {\n-          console.log('hi')\n-          event.target.closest('form').submit();\n-        })\n-      </script>\n </body>\n \n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1639500419371,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,12 +26,12 @@\n       <div>\n         <label for=\"nachname\">Nachname</label>\n         <input id=\"nachname\" name=\"nachname\" type=\"text\">\n       </div>\n-      <button id=\"submit-button\" class=\"g-recaptcha\" data-sitekey=\"6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\" data-callback='onSubmit'\n-        data-action='submit'>\n+      <button id=\"submit-button\" class=\"g-recaptcha\" data-sitekey=\"6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\"\n+        data-callback='onSubmit' data-action='submit'>\n         Submit\n       </button>\n-      </form>\n+  </form>\n </body>\n \n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1639500565640,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,9 @@\n   <meta charset=\"UTF-8\">\n   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n   <title>Document</title>\n+  <script src=\"https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key\"></script>\n   <script src=\"https://www.google.com/recaptcha/api.js\" defer></script>\n   <script>\n     function onSubmit(token) {\n       console.log('token: ' + token);\n"
+                },
+                {
+                    "date": 1639500580740,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   <meta charset=\"UTF-8\">\n   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n   <title>Document</title>\n-  <script src=\"https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key\"></script>\n+  <script src=\"https://www.google.com/recaptcha/api.js?render=6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\"></script>\n   <script src=\"https://www.google.com/recaptcha/api.js\" defer></script>\n   <script>\n     function onSubmit(token) {\n       console.log('token: ' + token);\n"
+                },
+                {
+                    "date": 1639500587929,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,8 @@\n   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n   <title>Document</title>\n   <script src=\"https://www.google.com/recaptcha/api.js?render=6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\"></script>\n-  <script src=\"https://www.google.com/recaptcha/api.js\" defer></script>\n   <script>\n     function onSubmit(token) {\n       console.log('token: ' + token);\n       document.getElementById(\"demo-form\").submit();\n"
+                },
+                {
+                    "date": 1639500621036,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,13 +7,17 @@\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n   <title>Document</title>\n   <script src=\"https://www.google.com/recaptcha/api.js?render=6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\"></script>\n   <script>\n-    function onSubmit(token) {\n-      console.log('token: ' + token);\n-      document.getElementById(\"demo-form\").submit();\n+    function onClick(e) {\n+      e.preventDefault();\n+      grecaptcha.ready(function() {\n+        grecaptcha.execute('reCAPTCHA_site_key', {action: 'submit'}).then(function(token) {\n+            // Add your logic to submit to your backend server here.\n+        });\n+      });\n     }\n-  </script>\n+</script>\n </head>\n \n <body>\n   <h1>Hello hello</h1>\n"
+                },
+                {
+                    "date": 1639501070672,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,19 +5,15 @@\n   <meta charset=\"UTF-8\">\n   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n   <title>Document</title>\n-  <script src=\"https://www.google.com/recaptcha/api.js?render=6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\"></script>\n   <script>\n-    function onClick(e) {\n-      e.preventDefault();\n-      grecaptcha.ready(function() {\n-        grecaptcha.execute('reCAPTCHA_site_key', {action: 'submit'}).then(function(token) {\n-            // Add your logic to submit to your backend server here.\n-        });\n-      });\n+    function onSubmit(token) {\n+      console.log('token: ' + token);\n+      document.getElementById(\"demo-form\").submit();\n     }\n-</script>\n+    </script>\n+    <script src=\"https://www.google.com/recaptcha/api.js\" defer></script>\n </head>\n \n <body>\n   <h1>Hello hello</h1>\n"
+                },
+                {
+                    "date": 1639501901042,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n       console.log('token: ' + token);\n       document.getElementById(\"demo-form\").submit();\n     }\n     </script>\n-    <script src=\"https://www.google.com/recaptcha/api.js\" defer></script>\n+<script async src=\"https://www.google.com/recaptcha/api.js\"></script>\n </head>\n \n <body>\n   <h1>Hello hello</h1>\n"
+                },
+                {
+                    "date": 1639501922074,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,16 +5,17 @@\n   <meta charset=\"UTF-8\">\n   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n   <title>Document</title>\n+  <script async src=\"https://www.google.com/recaptcha/api.js\"></script>\n   <script>\n-    function onSubmit(token) {\n-      console.log('token: ' + token);\n-      document.getElementById(\"demo-form\").submit();\n-    }\n-    </script>\n-<script async src=\"https://www.google.com/recaptcha/api.js\"></script>\n-</head>\n+    // If reCAPTCHA is still loading, grecaptcha will be undefined.\n+    grecaptcha.ready(function(){\n+      grecaptcha.render(\"container\", {\n+        sitekey: \"ABC-123\"\n+      });\n+    });\n+  </script></head>\n \n <body>\n   <h1>Hello hello</h1>\n   <h2>This is a recaptcha test</h2>\n"
+                },
+                {
+                    "date": 1639502029610,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n       <div>\n         <label for=\"nachname\">Nachname</label>\n         <input id=\"nachname\" name=\"nachname\" type=\"text\">\n       </div>\n-      <button id=\"submit-button\" class=\"g-recaptcha\" data-sitekey=\"6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\"\n+      <button class=\"g-recaptcha\" data-sitekey=\"6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\"\n         data-callback='onSubmit' data-action='submit'>\n         Submit\n       </button>\n   </form>\n"
+                },
+                {
+                    "date": 1639502042897,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,12 +27,12 @@\n       <div>\n         <label for=\"nachname\">Nachname</label>\n         <input id=\"nachname\" name=\"nachname\" type=\"text\">\n       </div>\n-      <button class=\"g-recaptcha\" data-sitekey=\"6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\"\n+      <input type=\"submit\" class=\"g-recaptcha\" data-sitekey=\"6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\"\n         data-callback='onSubmit' data-action='submit'>\n         Submit\n-      </button>\n+      </input>\n   </form>\n </body>\n \n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1639502057777,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,9 +29,8 @@\n         <input id=\"nachname\" name=\"nachname\" type=\"text\">\n       </div>\n       <input type=\"submit\" class=\"g-recaptcha\" data-sitekey=\"6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\"\n         data-callback='onSubmit' data-action='submit'>\n-        Submit\n       </input>\n   </form>\n </body>\n \n"
+                },
+                {
+                    "date": 1639502193411,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,8 +9,9 @@\n   <script async src=\"https://www.google.com/recaptcha/api.js\"></script>\n   <script>\n     // If reCAPTCHA is still loading, grecaptcha will be undefined.\n     grecaptcha.ready(function(){\n+      console.log('reCAPTCHA is ready!');\n       grecaptcha.render(\"container\", {\n         sitekey: \"ABC-123\"\n       });\n     });\n"
+                },
+                {
+                    "date": 1639502348760,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,10 +5,13 @@\n   <meta charset=\"UTF-8\">\n   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n   <title>Document</title>\n-  <script async src=\"https://www.google.com/recaptcha/api.js\"></script>\n+  <script async src=\"https://www.google.com/recaptcha/api.js?onload=onloadCallback\"></script>\n   <script>\n+    function onloadCallback() {\n+      console.log('onloadCallback');\n+    }\n     // If reCAPTCHA is still loading, grecaptcha will be undefined.\n     grecaptcha.ready(function(){\n       console.log('reCAPTCHA is ready!');\n       grecaptcha.render(\"container\", {\n"
+                },
+                {
+                    "date": 1639502373463,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,16 +9,16 @@\n   <script async src=\"https://www.google.com/recaptcha/api.js?onload=onloadCallback\"></script>\n   <script>\n     function onloadCallback() {\n       console.log('onloadCallback');\n+      // If reCAPTCHA is still loading, grecaptcha will be undefined.\n+      grecaptcha.ready(function(){\n+        console.log('reCAPTCHA is ready!');\n+        grecaptcha.render(\"container\", {\n+          sitekey: \"ABC-123\"\n+        });\n+      });\n     }\n-    // If reCAPTCHA is still loading, grecaptcha will be undefined.\n-    grecaptcha.ready(function(){\n-      console.log('reCAPTCHA is ready!');\n-      grecaptcha.render(\"container\", {\n-        sitekey: \"ABC-123\"\n-      });\n-    });\n   </script></head>\n \n <body>\n   <h1>Hello hello</h1>\n"
+                },
+                {
+                    "date": 1639502453102,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,11 +12,9 @@\n       console.log('onloadCallback');\n       // If reCAPTCHA is still loading, grecaptcha will be undefined.\n       grecaptcha.ready(function(){\n         console.log('reCAPTCHA is ready!');\n-        grecaptcha.render(\"container\", {\n-          sitekey: \"ABC-123\"\n-        });\n+\n       });\n     }\n   </script></head>\n \n"
+                },
+                {
+                    "date": 1639502505027,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   <meta charset=\"UTF-8\">\n   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n   <title>Document</title>\n-  <script async src=\"https://www.google.com/recaptcha/api.js?onload=onloadCallback\"></script>\n+  <script async src=\"https://www.google.com/recaptcha/api.js?onload=onloadCallback?render=6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\"></script>\n   <script>\n     function onloadCallback() {\n       console.log('onloadCallback');\n       // If reCAPTCHA is still loading, grecaptcha will be undefined.\n"
+                },
+                {
+                    "date": 1639502553744,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,12 @@\n       console.log('onloadCallback');\n       // If reCAPTCHA is still loading, grecaptcha will be undefined.\n       grecaptcha.ready(function(){\n         console.log('reCAPTCHA is ready!');\n-\n+        grecaptcha.execute('6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-', {action: 'homepage'}).then(function(token){\n+          console.log(token);\n+          document.getElementById('g-recaptcha-response').value = token;\n+        });\n       });\n     }\n   </script></head>\n \n"
+                },
+                {
+                    "date": 1639502591398,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   <meta charset=\"UTF-8\">\n   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n   <title>Document</title>\n-  <script async src=\"https://www.google.com/recaptcha/api.js?onload=onloadCallback?render=6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\"></script>\n+  <script async src=\"https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\"></script>\n   <script>\n     function onloadCallback() {\n       console.log('onloadCallback');\n       // If reCAPTCHA is still loading, grecaptcha will be undefined.\n"
+                },
+                {
+                    "date": 1639502698515,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,8 +35,9 @@\n       </div>\n       <input type=\"submit\" class=\"g-recaptcha\" data-sitekey=\"6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\"\n         data-callback='onSubmit' data-action='submit'>\n       </input>\n+      <input type=\"hidden\" class=\"g-recaptcha-response\">\n   </form>\n </body>\n \n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1639502705863,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,9 +35,9 @@\n       </div>\n       <input type=\"submit\" class=\"g-recaptcha\" data-sitekey=\"6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\"\n         data-callback='onSubmit' data-action='submit'>\n       </input>\n-      <input type=\"hidden\" class=\"g-recaptcha-response\">\n+      <input type=\"hidden\" id=\"g-recaptcha-response\">\n   </form>\n </body>\n \n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1639502745239,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,10 +32,9 @@\n       <div>\n         <label for=\"nachname\">Nachname</label>\n         <input id=\"nachname\" name=\"nachname\" type=\"text\">\n       </div>\n-      <input type=\"submit\" class=\"g-recaptcha\" data-sitekey=\"6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\"\n-        data-callback='onSubmit' data-action='submit'>\n+      <input type=\"submit\">\n       </input>\n       <input type=\"hidden\" id=\"g-recaptcha-response\">\n   </form>\n </body>\n"
+                },
+                {
+                    "date": 1639502811242,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,21 +6,9 @@\n   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n   <title>Document</title>\n   <script async src=\"https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-\"></script>\n-  <script>\n-    function onloadCallback() {\n-      console.log('onloadCallback');\n-      // If reCAPTCHA is still loading, grecaptcha will be undefined.\n-      grecaptcha.ready(function(){\n-        console.log('reCAPTCHA is ready!');\n-        grecaptcha.execute('6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-', {action: 'homepage'}).then(function(token){\n-          console.log(token);\n-          document.getElementById('g-recaptcha-response').value = token;\n-        });\n-      });\n-    }\n-  </script></head>\n+  </head>\n \n <body>\n   <h1>Hello hello</h1>\n   <h2>This is a recaptcha test</h2>\n@@ -36,7 +24,20 @@\n       <input type=\"submit\">\n       </input>\n       <input type=\"hidden\" id=\"g-recaptcha-response\">\n   </form>\n+  <script>\n+    function onloadCallback() {\n+      console.log('onloadCallback');\n+      // If reCAPTCHA is still loading, grecaptcha will be undefined.\n+      grecaptcha.ready(function(){\n+        console.log('reCAPTCHA is ready!');\n+        grecaptcha.execute('6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-', {action: 'homepage'}).then(function(token){\n+          console.log(token);\n+          document.getElementById('g-recaptcha-response').value = token;\n+        });\n+      });\n+    }\n+  </script>\n </body>\n \n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1639502905627,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,11 +20,11 @@\n       <div>\n         <label for=\"nachname\">Nachname</label>\n         <input id=\"nachname\" name=\"nachname\" type=\"text\">\n       </div>\n+      <input type=\"hidden\" id=\"g-recaptcha-response\">\n       <input type=\"submit\">\n       </input>\n-      <input type=\"hidden\" id=\"g-recaptcha-response\">\n   </form>\n   <script>\n     function onloadCallback() {\n       console.log('onloadCallback');\n"
+                },
+                {
+                    "date": 1639502968770,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n       <div>\n         <label for=\"nachname\">Nachname</label>\n         <input id=\"nachname\" name=\"nachname\" type=\"text\">\n       </div>\n-      <input type=\"hidden\" id=\"g-recaptcha-response\">\n+      <input type=\"hidden\" id=\"g-recaptcha-response\" name=\"g-recaptcha-response\">\n       <input type=\"submit\">\n       </input>\n   </form>\n   <script>\n"
+                },
+                {
+                    "date": 1639503003785,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,9 +30,9 @@\n       console.log('onloadCallback');\n       // If reCAPTCHA is still loading, grecaptcha will be undefined.\n       grecaptcha.ready(function(){\n         console.log('reCAPTCHA is ready!');\n-        grecaptcha.execute('6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-', {action: 'homepage'}).then(function(token){\n+        grecaptcha.execute('6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-', {action: 'submit'}).then(function(token){\n           console.log(token);\n           document.getElementById('g-recaptcha-response').value = token;\n         });\n       });\n"
                 }
             ],
             "date": 1639185718340,

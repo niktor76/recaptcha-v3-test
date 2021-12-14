@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 59,
+            "activePatchIndex": 67,
             "patches": [
                 {
                     "date": 1639409800624,
@@ -244,6 +244,38 @@
                 {
                     "date": 1639495707643,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,9 +33,9 @@\n \n \n async function isVerified(response) {\n   console.log('response:', response)\n-  const secret = '6Le7344dAAAAAJqUumaCgCuxh7g_AGp34NZUmFW0'\n+  const secret = '6LcI-aAdAAAAAAeEcp6jW_OyarPafOiqrkfhMZLB'\n   const url = 'https://www.google.com/recaptcha/api/siteverify'\n   try {\n     const result = await axios(\n       {\n"
+                },
+                {
+                    "date": 1639498646396,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n \n const express = require('express')\n const axios = require('axios')\n const app = express()\n-const port = 3333\n+const port = 3334\n const bodyParser = require('body-parser')\n \n app.use(bodyParser.urlencoded({ extended: false }))\n \n"
+                },
+                {
+                    "date": 1639500059804,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -47,8 +47,9 @@\n         },\n         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }\n       }\n     )\n+    console.log('result:', result)\n     return result.data.success\n   } catch (error) {\n     console.log('error', error)\n     return false\n"
+                },
+                {
+                    "date": 1639501193512,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n })\n \n app.post('/', async (req, res) => {\n   console.log('vorname', req.body.vorname)\n-  const isOk = await isVerified(req.body['g-recaptcha-response'])\n+  // const isOk = await isVerified(req.body['g-recaptcha-response'])\n   console.log('post', isOk)\n   let reaktion\n   if (isOk) {\n     reaktion = 'Sehr schön, du hast das reCaptcha richtig beantwortet'\n"
+                },
+                {
+                    "date": 1639504408626,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,9 @@\n   res.send('get')\n })\n \n app.post('/', async (req, res) => {\n+  console.log('req:', req)\n   console.log('vorname', req.body.vorname)\n   // const isOk = await isVerified(req.body['g-recaptcha-response'])\n   console.log('post', isOk)\n   let reaktion\n@@ -32,9 +33,8 @@\n \n \n \n async function isVerified(response) {\n-  console.log('response:', response)\n   const secret = '6LcI-aAdAAAAAAeEcp6jW_OyarPafOiqrkfhMZLB'\n   const url = 'https://www.google.com/recaptcha/api/siteverify'\n   try {\n     const result = await axios(\n@@ -47,9 +47,8 @@\n         },\n         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }\n       }\n     )\n-    console.log('result:', result)\n     return result.data.success\n   } catch (error) {\n     console.log('error', error)\n     return false\n"
+                },
+                {
+                    "date": 1639504445141,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n \n app.post('/', async (req, res) => {\n   console.log('req:', req)\n   console.log('vorname', req.body.vorname)\n-  // const isOk = await isVerified(req.body['g-recaptcha-response'])\n+  const isOk = await isVerified(req.body['g-recaptcha-response'])\n   console.log('post', isOk)\n   let reaktion\n   if (isOk) {\n     reaktion = 'Sehr schön, du hast das reCaptcha richtig beantwortet'\n"
+                },
+                {
+                    "date": 1639504507982,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n   res.send('get')\n })\n \n app.post('/', async (req, res) => {\n-  console.log('req:', req)\n+  console.log('req:', req.body)\n   console.log('vorname', req.body.vorname)\n   const isOk = await isVerified(req.body['g-recaptcha-response'])\n   console.log('post', isOk)\n   let reaktion\n"
+                },
+                {
+                    "date": 1639504561963,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,8 @@\n })\n \n app.post('/', async (req, res) => {\n   console.log('req:', req.body)\n-  console.log('vorname', req.body.vorname)\n   const isOk = await isVerified(req.body['g-recaptcha-response'])\n   console.log('post', isOk)\n   let reaktion\n   if (isOk) {\n@@ -33,8 +32,9 @@\n \n \n \n async function isVerified(response) {\n+  console.log('response:', response)\n   const secret = '6LcI-aAdAAAAAAeEcp6jW_OyarPafOiqrkfhMZLB'\n   const url = 'https://www.google.com/recaptcha/api/siteverify'\n   try {\n     const result = await axios(\n"
+                },
+                {
+                    "date": 1639504683821,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -47,8 +47,9 @@\n         },\n         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }\n       }\n     )\n+    console.log('result.data:', result.data)\n     return result.data.success\n   } catch (error) {\n     console.log('error', error)\n     return false\n"
                 }
             ],
             "date": 1639409800624,

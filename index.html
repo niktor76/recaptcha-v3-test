@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script>
-    function onSubmit(token) {
-      document.getElementById("demo-form").submit();
-    }
-  </script>
-</head>
+  <script async src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-"></script>
+  </head>
+
 <body>
   <h1>Hello hello</h1>
   <h2>This is a recaptcha test</h2>
   <h3>Version 3</h3>
-  <form action="http://161.97.107.249:3333/" method="post" id="demo-form">
+  <form action="http://161.97.107.249:3334/" method="post" id="demo-form">
     <div>
       <label for="vorname">Vorname</label>
       <input id="vorname" name="vorname" type="text">
@@ -24,11 +21,23 @@
         <label for="nachname">Nachname</label>
         <input id="nachname" name="nachname" type="text">
       </div>
-      <div>
-        <button class="g-recaptcha" 
-        data-sitekey="6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-" 
-        data-callback='onSubmit' 
-        data-action='submit'>Submit</button>      </div>
+      <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+      <input type="submit">
+      </input>
   </form>
+  <script>
+    function onloadCallback() {
+      console.log('onloadCallback');
+      // If reCAPTCHA is still loading, grecaptcha will be undefined.
+      grecaptcha.ready(function(){
+        console.log('reCAPTCHA is ready!');
+        grecaptcha.execute('6LcI-aAdAAAAAN3eslz28qrcgJSdSo5J4APGvOI-', {action: 'submit'}).then(function(token){
+          console.log(token);
+          document.getElementById('g-recaptcha-response').value = token;
+        });
+      });
+    }
+  </script>
 </body>
+
 </html>
