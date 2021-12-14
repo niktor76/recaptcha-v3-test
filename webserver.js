@@ -34,7 +34,7 @@ app.listen(port, () => {
 
 async function isVerified(response) {
   console.log('response:', response)
-  const secret = '6Le7344dAAAAAJqUumaCgCuxh7g_AGp34NZUmFW0'
+  const secret = '6LcI-aAdAAAAAAeEcp6jW_OyarPafOiqrkfhMZLB'
   const url = 'https://www.google.com/recaptcha/api/siteverify'
   try {
     const result = await axios(

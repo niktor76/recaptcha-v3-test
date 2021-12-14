@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 58,
+            "activePatchIndex": 59,
             "patches": [
                 {
                     "date": 1639409800624,
@@ -240,6 +240,10 @@
                 {
                     "date": 1639492549001,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,6 +51,6 @@\n     return result.data.success\n   } catch (error) {\n     console.log('error', error)\n     return false\n-  }d\n+  }\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1639495707643,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,9 +33,9 @@\n \n \n async function isVerified(response) {\n   console.log('response:', response)\n-  const secret = '6Le7344dAAAAAJqUumaCgCuxh7g_AGp34NZUmFW0'\n+  const secret = '6LcI-aAdAAAAAAeEcp6jW_OyarPafOiqrkfhMZLB'\n   const url = 'https://www.google.com/recaptcha/api/siteverify'\n   try {\n     const result = await axios(\n       {\n"
                 }
             ],
             "date": 1639409800624,
